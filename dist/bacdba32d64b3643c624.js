@@ -1,1 +1,0 @@
-import ReactDOM from"react-dom";ReactDOM.render(React.createElement("div",null,"hello webpack5"),document.getElementById("root"));var a=function(){return 1};

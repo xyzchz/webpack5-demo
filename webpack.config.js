@@ -9,34 +9,40 @@ module.exports = {
     }
   },
   devtool: 'source-map',
-  entry: './src/index.html',
+  entry: './src/index.js',
   output: {
     filename: 'main.js',
     path: path.resolve(__dirname, 'dist'),
     publicPath: './',
   },
-  mode: 'production',
+  target: "web",
+  mode: 'development',
   module: {
     rules: [
       {
-        test: /\.(js|jsx)$/,
+        test: /\.(js|jsx)/,
         // 排除 node_modules 和 bower_components 下的文件
         exclude: /(node_modules|bower_components)/,
         use: {
           loader: "babel-loader",
           options: {
-            presets: ['@babel/preset-env', '@babel/preset-react']
-              // [
-              //   "@babel/preset-react",
-              //   [
-              //     "@babel/preset-env",
-              //     {
-              //       // 只引用使用了新特性 polyfill
-              //       useBuiltIns: 'usage',
-              //       modules: 'commonjs'
-              //     }
-              //   ]
-              // ]
+            presets: [
+              '@babel/preset-react',
+              [
+                '@babel/preset-env',
+                {
+                  useBuiltIns: "usage",
+                  corejs: { version: 3 },
+                  // modules: 'commonjs',
+                  // modules: false,
+                  targets: {
+                    chrome: 60,
+                    firefox: 50,
+                    ie: 11
+                  }
+                }
+              ],
+            ]
           }
         }
       },
@@ -52,4 +58,10 @@ module.exports = {
       filename: 'index.html'
     })
   ],
+  devServer: {
+    contentBase: path.resolve(__dirname, 'dist'),
+    compress: true, // 开启 Gzip压缩
+    port: 9143,
+    open: true
+  }
 };
