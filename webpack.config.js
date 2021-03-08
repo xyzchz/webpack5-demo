@@ -1,5 +1,6 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const webpack = require('webpack');
 
 module.exports = {
   resolve: {
@@ -11,7 +12,7 @@ module.exports = {
   devtool: 'source-map',
   entry: './src/index.js',
   output: {
-    filename: 'main.js',
+    filename: 'bundle.js',
     path: path.resolve(__dirname, 'dist'),
     publicPath: './',
   },
@@ -56,12 +57,15 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: './src/index.html',
       filename: 'index.html'
+    }),
+    new webpack.ProvidePlugin({
+      "React": "react",
     })
   ],
   devServer: {
-    contentBase: path.resolve(__dirname, 'dist'),
+    // contentBase: path.resolve(__dirname, 'dist'),
     compress: true, // 开启 Gzip压缩
     port: 9143,
-    open: true
+    // open: true
   }
 };
