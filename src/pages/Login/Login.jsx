@@ -4,7 +4,7 @@ export default class Index extends React.Component {
   render () {
     return (
       <>
-        主页layout
+        登录
       </>
     )
   }

@@ -1,12 +1,11 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const webpack = require('webpack');
 
 module.exports = {
   resolve: {
     extensions: ['*', '.js', '.jsx'], // 后缀名自动补全
     alias: {
-      '@': path.join(__dirname, './src/components') // 配置@目录
+      '@': path.join(__dirname, './src') // 配置@目录
     }
   },
   devtool: 'source-map',
@@ -14,7 +13,6 @@ module.exports = {
   output: {
     filename: 'bundle.js',
     path: path.resolve(__dirname, 'dist'),
-    publicPath: './',
   },
   target: "web",
   mode: 'development',
@@ -57,15 +55,14 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: './src/index.html',
       filename: 'index.html'
-    }),
-    new webpack.ProvidePlugin({
-      "React": "react",
     })
   ],
   devServer: {
     // contentBase: path.resolve(__dirname, 'dist'),
+    // contentBase: false,
     compress: true, // 开启 Gzip压缩
     port: 9143,
-    // open: true
+    hot: true,
+    open: true
   }
 };
