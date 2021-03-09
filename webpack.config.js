@@ -3,7 +3,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   resolve: {
-    extensions: ['*', '.js', '.jsx'], // 后缀名自动补全
+    extensions: ['.jsx', '.js'], // 后缀名自动补全
     alias: {
       '@': path.join(__dirname, './src') // 配置@目录
     }
@@ -63,6 +63,7 @@ module.exports = {
     compress: true, // 开启 Gzip压缩
     port: 9143,
     hot: true,
-    open: true
+    open: true,
+    historyApiFallback: true,
   }
 };
