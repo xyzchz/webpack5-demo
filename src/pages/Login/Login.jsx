@@ -5,7 +5,7 @@ export default class Index extends React.Component {
   render () {
     return (
       <>
-        登录
+        <span className='yellowse'>登录</span>
       </>
     )
   }

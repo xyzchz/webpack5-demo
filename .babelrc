@@ -1,0 +1,29 @@
+{
+  "presets": [
+    [
+      "@babel/preset-react"
+    ],
+    [
+      "@babel/preset-env",
+      {
+        "useBuiltIns": "usage",
+        "corejs": { "version": 3 },
+        // modules: 'commonjs',
+        // modules: false,
+        "targets": {
+          "chrome": 60,
+          "firefox": 50,
+          "ie": 11
+        }
+      }
+    ] // ES语法转换
+  ],
+  "plugins": [
+    [
+      "@babel/plugin-proposal-decorators",
+      {
+        "decoratorsBeforeExport": true
+      }
+    ]
+  ]
+}
