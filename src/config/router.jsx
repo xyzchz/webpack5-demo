@@ -7,9 +7,8 @@ export default class App extends Component {
     return (
       <BrowserRouter>
         <Switch>
-          <Route path='/home' exact component={require('@/pages/Index/Index').default}></Route>
+          <Route path='/' component={require('@/pages/Index/Index').default}></Route>
           <Route path='/login' exact component={require('@/pages/Login/Login').default}></Route>
-          <Redirect exact from='/' to='/home' />
         </Switch>
       </BrowserRouter>
     )
