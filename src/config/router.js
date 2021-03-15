@@ -7,6 +7,6 @@ export default [
   {
     path: '/login',
     name: '登录',
-    component: '@/pages/Login/index',
+    component: '@/pages/Login/Login',
   }
 ]

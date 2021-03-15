@@ -24,6 +24,9 @@
       {
         "decoratorsBeforeExport": true
       }
+    ],
+    [
+      "@babel/plugin-proposal-class-properties"
     ]
   ]
 }
