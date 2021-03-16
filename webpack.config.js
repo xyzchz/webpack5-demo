@@ -1,5 +1,6 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 module.exports = {
   resolve: {
@@ -9,13 +10,16 @@ module.exports = {
     }
   },
   devtool: 'source-map',
+  // devtool: false,
   entry: './src/index.js',
   output: {
-    filename: 'bundle.js',
-    path: path.resolve(__dirname, 'dist'),
+    filename: '[name].[contenthash:8].js',
+    chunkFilename: '[name].[contenthash:8].async.js',
+    path: path.resolve(__dirname, 'dist')
   },
   target: "web",
   mode: 'development',
+  // mode: 'production',
   module: {
     rules: [
       {
@@ -96,6 +100,9 @@ module.exports = {
       template: './src/index.html',
       filename: 'index.html'
     }),
+    new BundleAnalyzerPlugin({
+      analyzerPort: 3213
+    }),
   ],
   devServer: {
     // contentBase: path.resolve(__dirname, 'dist'),
@@ -105,5 +112,32 @@ module.exports = {
     hot: true,
     open: true,
     historyApiFallback: true,
+  },
+  optimization: {
+    minimize: true,
+    splitChunks: {
+      chunks: "async",
+      minSize: 30000, // 模块的最小体积
+      minChunks: 1, // 模块的最小被引用次数
+      maxAsyncRequests: 5, // 按需加载的最大并行请求数
+      maxInitialRequests: 3, // 一个入口最大并行请求数
+      automaticNameDelimiter: '~', // 文件名的连接符
+      cacheGroups: { // 缓存组
+        common: {
+          chunks: 'initial',
+          name: 'common', // 打包后的文件名
+          minSize: 0,
+          minChunks: 2 // 重复2次才能打包到此模块
+        },
+        vendor: {
+          priority: 1, // 优先级配置，优先匹配优先级更高的规则，不设置的规则优先级默认为0
+          test: /node_modules/, // 匹配对应文件
+          chunks: 'initial',
+          name: 'vendor',
+          minSize: 0,
+          minChunks: 1
+        }
+      }
+    }
   }
 };

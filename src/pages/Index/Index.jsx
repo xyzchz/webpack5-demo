@@ -3,12 +3,21 @@ import { Link } from 'react-router-dom'
 import CSSModules from 'react-css-modules'
 import { BrowserRouter, Route, Redirect, Switch, Prompt } from 'react-router-dom';
 
+import BeforeRouter from '@/components/BeforeRouter'
 import styles from './index.less'
 
-class Index extends React.Component {
+function before () {
+  return true
+}
+
+@BeforeRouter({ before })
+@CSSModules(styles, { allowMultiple: true })
+export default class Index extends React.Component {
 
   componentDidMount () {
-    console.log(this.props)
+    setTimeout(() => {
+      console.log(this.props)
+    }, 3000);
   }
 
   render () {
@@ -34,5 +43,3 @@ class Index extends React.Component {
     )
   }
 }
-
-export default CSSModules(Index, styles, { allowMultiple: true })

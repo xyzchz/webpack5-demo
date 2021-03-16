@@ -1,39 +1,74 @@
-.menu{
-  width: 200px;
-  height: 100vh;
-  background-color: rgb(35, 21, 231);
-  position: absolute;
-  left: 0;
-  top: 0;
-}
+	.menu {
+	  width: 250px;
+	  height: 100vh;
+	  background-color: rgb(35, 21, 231);
+	  position: absolute;
+	  left: 0;
+	  top: 0;
+	}
 
-.header{
-  height: 80px;
-  background-color: black;
-  width: calc(100% - 200px);
-  position: absolute;
-  right: 0;
-  top: 0;
-}
+	.header {
+	  height: 80px;
+	  background-color: black;
+	  width: calc(100% - 250px);
+	  position: absolute;
+	  right: 0;
+	  top: 0;
+	}
 
-.content{
-  width: calc(100% - 200px);
-  height: calc(100% - 160px);
-  background: url('@/assets/Frame.png');
-  position: absolute;
-  right: 0;
-  top: 80px;
-}
+	.content {
+	  width: calc(100% - 250px);
+	  height: calc(100% - 160px);
+	  background: url('@/assets/Frame.png');
+	  position: absolute;
+	  right: 0;
+	  top: 80px;
+	}
 
-.footer{
-  height: 80px;
-  background-color: rgb(42, 58, 58);
-  width: calc(100% - 200px);
-  position: absolute;
-  right: 0;
-  bottom: 0;
-}
+	.footer {
+	  height: 80px;
+	  background-color: rgb(42, 58, 58);
+	  width: calc(100% - 250px);
+	  position: absolute;
+	  right: 0;
+	  bottom: 0;
+	}
 
-:global .yellowse{
-  color: yellow
-}
+	@media screen and (max-width:960px) {
+	  .menu {
+	    width: 80px;
+	    height: 100vh;
+	    background-color: rgb(35, 21, 231);
+	    position: absolute;
+	    left: 0;
+	    top: 0;
+	  }
+
+	  .header {
+	    height: 80px;
+	    background-color: black;
+	    width: calc(100% - 80px);
+	    position: absolute;
+	    right: 0;
+	    top: 0;
+	  }
+
+	  .content {
+	    width: calc(100% - 80px);
+	    height: calc(100% - 160px);
+	    background: url('@/assets/Frame.png');
+	    position: absolute;
+	    right: 0;
+	    top: 80px;
+	  }
+
+	  .footer {
+	    height: 80px;
+	    background-color: rgb(42, 58, 58);
+	    width: calc(100% - 80px);
+	    position: absolute;
+	    right: 0;
+	    bottom: 0;
+	  }
+  }
+ 
