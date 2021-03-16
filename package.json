@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack",
+    "build": "webpack --config ./src/config/webpack.config.prod.js",
     "serve": "webpack serve",
     "analyze": "cross-env NODE_ENV=production npm_config_report=true npm run build"
   },
@@ -27,6 +27,7 @@
     "less": "^4.1.1",
     "less-loader": "^8.0.0",
     "react-css-modules": "^4.7.11",
+    "react-loadable": "^5.5.0",
     "style-loader": "^2.0.0",
     "url-loader": "^4.1.1",
     "webpack": "^5.24.3",

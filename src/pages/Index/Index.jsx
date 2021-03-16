@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import CSSModules from 'react-css-modules'
 import { BrowserRouter, Route, Redirect, Switch, Prompt } from 'react-router-dom';
 
+import loadable from '@/utils/loadable'
 import BeforeRouter from '@/components/BeforeRouter'
 import styles from './index.less'
 
@@ -29,8 +30,8 @@ export default class Index extends React.Component {
         <div styleName='header'>
         </div>
         <div styleName='content'>
-            <Route path='/index' exact component={require('@/pages/Charts/Charts').default}></Route>
-            <Route path='/group' exact component={require('@/pages/Group/Group').default}></Route>
+            <Route path='/index' exact component={loadable(() => import('@/pages/Charts/Charts'))}></Route>
+            <Route path='/group' exact component={loadable(() => import('@/pages/Group/Group'))}></Route>
             <Redirect to='/index' from='/' />
         </div>
         <div styleName='footer'>footer</div>

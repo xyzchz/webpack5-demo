@@ -33,6 +33,7 @@
       {
         "loose": true
       }
-    ]
+    ],
+    ["@babel/plugin-syntax-dynamic-import"]
   ]
 }
